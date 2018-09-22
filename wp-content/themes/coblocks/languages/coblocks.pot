@@ -1,0 +1,333 @@
+# Copyright (C) 2018 CoBlocks
+# This file is distributed under the same license as the CoBlocks package.
+msgid ""
+msgstr ""
+"Project-Id-Version: CoBlocks\n"
+"Report-Msgid-Bugs-To: https://richtabor.com\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Rich Tabor of CoBlocks <hello@coblocks.com>\n"
+"Language-Team: CoBlocks\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 404.php:14
+msgid "Yikes!"
+msgstr ""
+
+#: 404.php:15
+msgid "It looks like you're lost."
+msgstr ""
+
+#: archive.php:37, index.php:43, search.php:43
+msgid "Previous page"
+msgstr ""
+
+#: archive.php:38, index.php:44, search.php:44
+msgid "Next page"
+msgstr ""
+
+#: archive.php:39, index.php:45, search.php:45
+msgid "Page"
+msgstr ""
+
+#: comments.php:37
+msgctxt "comments title"
+msgid "One reply to &ldquo;%s&rdquo;"
+msgstr ""
+
+#: comments.php:41
+msgctxt "comments title"
+msgid "%1$s reply to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s replies to &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:70
+msgid "Previous"
+msgstr ""
+
+#: comments.php:71
+msgid "Next"
+msgstr ""
+
+#: comments.php:82
+msgid "Comments are closed."
+msgstr ""
+
+#: components/page/content-page.php:44, components/post/content.php:44
+msgid "Pages:"
+msgstr ""
+
+#: footer.php:32
+msgid "Powered by %1$s"
+msgstr ""
+
+#: footer.php:39, functions.php:77
+msgid "Footer Menu"
+msgstr ""
+
+#: functions.php:76, functions.php:178, header.php:64
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:78, functions.php:192, header.php:41
+msgid "Social Menu"
+msgstr ""
+
+#: functions.php:104
+msgid "Black"
+msgstr ""
+
+#: functions.php:109
+msgid "Gray"
+msgstr ""
+
+#: functions.php:114
+msgid "Light Gray"
+msgstr ""
+
+#: functions.php:157
+msgctxt "Theme starter content"
+msgid "Logo"
+msgstr ""
+
+#: functions.php:165
+msgctxt "Theme starter content"
+msgid "CoBlocks, A beautiful Gutenberg-centric WordPress theme"
+msgstr ""
+
+#: functions.php:181
+msgctxt "Theme starter content"
+msgid "Articles"
+msgstr ""
+
+#: functions.php:184
+msgctxt "Theme starter content"
+msgid "About"
+msgstr ""
+
+#: functions.php:187
+msgctxt "Theme starter content"
+msgid "Contact"
+msgstr ""
+
+#: functions.php:222
+msgid "Footer"
+msgstr ""
+
+#: functions.php:224
+msgid "Appears in the site footer."
+msgstr ""
+
+#: functions.php:257
+msgid "Expand child menu"
+msgstr ""
+
+#: functions.php:258
+msgid "Collapse child menu"
+msgstr ""
+
+#: functions.php:320
+msgctxt "Heebo font: on or off"
+msgid "on"
+msgstr ""
+
+#: functions.php:327
+msgctxt "Lora font: on or off"
+msgid "on"
+msgstr ""
+
+#: header.php:25
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:68
+msgid "Menu"
+msgstr ""
+
+#: inc/auto-load-next-post.php:36
+msgid "Read my next article"
+msgstr ""
+
+#: inc/back-compat.php:34, inc/back-compat.php:44, inc/back-compat.php:57
+msgid "CoBlocks requires at least WordPress version 4.7. You are running version %s. Please upgrade and try again."
+msgstr ""
+
+#: inc/customizer/customizer.php:61
+msgid "Get the CoBlocks Plugin"
+msgstr ""
+
+#: inc/customizer/customizer.php:62
+msgid "Download"
+msgstr ""
+
+#: inc/customizer/customizer.php:75
+msgid "Theme Options"
+msgstr ""
+
+#: inc/customizer/customizer.php:96
+msgid "Max Width"
+msgstr ""
+
+#: inc/customizer/customizer.php:122
+msgid "Mobile Max Width"
+msgstr ""
+
+#: inc/customizer/customizer.php:147
+msgid "Border Radius"
+msgstr ""
+
+#: inc/customizer/customizer.php:165
+msgid "Display the Site Title and Logo"
+msgstr ""
+
+#: inc/customizer/customizer.php:182
+msgid "Header Search"
+msgstr ""
+
+#: inc/customizer/customizer.php:183
+msgid "A site-wide searching element next to the header navigation."
+msgstr ""
+
+#: inc/customizer/customizer.php:200
+msgid "Night Mode"
+msgstr ""
+
+#: inc/customizer/customizer.php:201
+msgid "Enable for readers to view content easily while in the dark."
+msgstr ""
+
+#: inc/customizer/customizer.php:218
+msgid "Author"
+msgstr ""
+
+#: inc/customizer/customizer.php:219
+msgid "Add the post author metadata below the post title."
+msgstr ""
+
+#: inc/customizer/customizer.php:236
+msgid "Categories"
+msgstr ""
+
+#: inc/customizer/customizer.php:237
+msgid "Enable or disable categories that display in the post footer."
+msgstr ""
+
+#: inc/customizer/customizer.php:254
+msgid "Tags"
+msgstr ""
+
+#: inc/customizer/customizer.php:255
+msgid "Enable or disable tags that display in the post footer."
+msgstr ""
+
+#: inc/customizer/customizer.php:282
+msgid "Heading Color"
+msgstr ""
+
+#: inc/customizer/customizer.php:299
+msgid "Alt Heading Color"
+msgstr ""
+
+#: inc/customizer/customizer.php:316
+msgid "Text Color"
+msgstr ""
+
+#: inc/customizer/customizer.php:333
+msgid "Header Icon Color"
+msgstr ""
+
+#: inc/customizer/customizer.php:350
+msgid "Navigation Color"
+msgstr ""
+
+#: inc/customizer/customizer.php:367
+msgid "Mobile Navigation Color"
+msgstr ""
+
+#: inc/customizer/customizer.php:384
+msgid "Footer Background Color"
+msgstr ""
+
+#: inc/customizer/customizer.php:401
+msgid "Footer Text Color"
+msgstr ""
+
+#: inc/icons.php:40
+msgid "Please define default parameters in the form of an array."
+msgstr ""
+
+#: inc/icons.php:45
+msgid "Please define an SVG icon filename."
+msgstr ""
+
+#: inc/jetpack.php:50
+msgid "Load More..."
+msgstr ""
+
+#: inc/plugins.php:29
+msgid "Gutenberg"
+msgstr ""
+
+#: inc/plugins.php:34
+msgid "CoBlocks"
+msgstr ""
+
+#: inc/plugins.php:39
+msgid "Login Designer"
+msgstr ""
+
+#: inc/template-tags.php:25
+msgid "Toggle Night Mode"
+msgstr ""
+
+#: inc/template-tags.php:27
+msgctxt "settings button"
+msgid "Settings"
+msgstr ""
+
+#: inc/template-tags.php:73, searchform.php:17
+msgctxt "submit button"
+msgid "Search"
+msgstr ""
+
+#: inc/template-tags.php:144
+msgid "by %s"
+msgstr ""
+
+#: inc/template-tags.php:188
+msgid "Published"
+msgstr ""
+
+#: inc/template-tags.php:194
+msgid "<span class=\"screen-reader-text\">Posted on</span> %s"
+msgstr ""
+
+#: search.php:19
+msgid "Searching for: %s"
+msgstr ""
+
+#: search.php:21
+msgid "Nothing Found"
+msgstr ""
+
+#: search.php:53
+msgid "Sorry, but nothing matched your search terms. Please try searching again."
+msgstr ""
+
+#: searchform.php:14
+msgctxt "label"
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:16
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr ""
