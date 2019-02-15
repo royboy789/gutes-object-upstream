@@ -1,0 +1,21 @@
+{
+    "name": "royboy789/gutenberg-array-save",
+    "description": "Saving Gutenberg as a clean array of data to the database",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Roy Sivan",
+            "email": "roy@roysivan.com"
+        }
+    ],
+    "require": {
+        "php" : "^7.0",
+        "composer/installers": "^1.5"
+    },
+    "autoload" : {
+        "psr-4": {
+            "GutesObjectPlugin\\": "src/"
+        }
+    }
+}
