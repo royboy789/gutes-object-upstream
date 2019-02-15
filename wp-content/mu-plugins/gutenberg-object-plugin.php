@@ -1,6 +1,6 @@
 <?php
 /*
-  Plugin Name: Gutenberg OBject Plugin - MU
+  Plugin Name: Gutenberg Object Plugin - MU
   Plugin URI: https://pantheon.io/
   Description: Using the OBject Plugin
   Version: 0.1

@@ -8,8 +8,7 @@ use GutesObjectPlugin\GutesObjectPlugin;
 class Database {
 
 	public function create() {
-		register_activation_hook( GutesObjectPlugin::$GutesObjectPluginFile, [ $this, 'activate_gutes_array_save' ] );
-		register_deactivation_hook( GutesObjectPlugin::$GutesObjectPluginFile, [ $this, 'deactivate_gutes_array_save' ] );
+		$this->activate_gutes_array_save();
 	}
 
 	public function activate_gutes_array_save() {
