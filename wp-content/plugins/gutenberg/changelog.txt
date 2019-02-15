@@ -1,5 +1,9 @@
 == Changelog ==
 
+= 3.9.1 =
+
+* Deactivate plugin versions below 4.1 on WordPress 5.0. #11375
+
 = 3.9.0 (Release Candidate) =
 
 * 🏗 Add support for creating reusable blocks out of multi-selected groups of blocks not just individual blocks. This means the ability to easily save templates out of an existing set of blocks.
