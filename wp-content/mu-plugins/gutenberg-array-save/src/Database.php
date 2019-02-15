@@ -16,7 +16,7 @@ class Database {
 		global $wpdb;
 		$table_name = $wpdb->prefix . "gutes_arrays";
 		$charset_collate = $wpdb->get_charset_collate();
-		$sql = "CREATE TABLE $table_name (
+		$sql = "CREATE TABLE IF NOT EXISTS $table_name (
                     id mediumint(9) NOT NULL AUTO_INCREMENT,
                     post_id mediumint(9) NOT NULL,
                     time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
