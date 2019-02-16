@@ -70,7 +70,7 @@ function sample_admin_notice__success() {
 			<p class="z2-promo-form-slice__description">
 				Spin up a new site in minutes! <br/>
                 And use <a target="_blank" href="https://github.com/royboy789/gutes-object-upstream">This Custom Upstream</a><br/>
-                <strong>Demo:</strong><a target="_blank" href="http://dev-gutes-obj-plugin.pantheonsite.io/">Gutes Object Plugin Demo</a>
+                <strong>Demo:</strong> <a target="_blank" href="https://dev-gutes-obj-plugin.pantheonsite.io/">Gutes Object Plugin Demo</a>
             </p>
 		</div>
 	</div>
