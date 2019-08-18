@@ -1,142 +1,120 @@
 <?php
 /**
- * Functions related to editor blocks for the Gutenberg editor plugin.
+ * Block and style registration functions.
  *
  * @package gutenberg
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
-	die( 'Silence is golden.' );
-}
+/**
+ * Substitutes the implementation of a core-registered block type, if exists,
+ * with the built result from the plugin.
+ */
+function gutenberg_reregister_core_block_types() {
+	// Blocks directory may not exist if working from a fresh clone.
+	$blocks_dir = dirname( __FILE__ ) . '/../build/block-library/blocks/';
+	if ( ! file_exists( $blocks_dir ) ) {
+		return;
+	}
 
-if ( ! function_exists( 'gutenberg_parse_blocks' ) ) {
-	/**
-	 * Parses blocks out of a content string.
-	 *
-	 * @since 0.5.0
-	 * @deprecated 5.0.0 parse_blocks()
-	 *
-	 * @param  string $content Post content.
-	 * @return array  Array of parsed block objects.
-	 */
-	function gutenberg_parse_blocks( $content ) {
-		_deprecated_function( __FUNCTION__, '5.0.0', 'parse_blocks()' );
+	$block_names = array(
+		'archives.php'        => 'core/archives',
+		'block.php'           => 'core/block',
+		'calendar.php'        => 'core/calendar',
+		'categories.php'      => 'core/categories',
+		'latest-comments.php' => 'core/latest-comments',
+		'latest-posts.php'    => 'core/latest-posts',
+		'legacy-widget.php'   => 'core/legacy-widget',
+		'rss.php'             => 'core/rss',
+		'shortcode.php'       => 'core/shortcode',
+		'search.php'          => 'core/search',
+		'tag-cloud.php'       => 'core/tag-cloud',
+	);
 
-		return parse_blocks( $content );
+	$registry = WP_Block_Type_Registry::get_instance();
+
+	foreach ( $block_names as $file => $block_name ) {
+		if ( ! file_exists( $blocks_dir . $file ) ) {
+			return;
+		}
+
+		if ( $registry->is_registered( $block_name ) ) {
+			$registry->unregister( $block_name );
+		}
+
+		require $blocks_dir . $file;
 	}
 }
+add_action( 'init', 'gutenberg_reregister_core_block_types' );
 
-if ( ! function_exists( 'get_dynamic_blocks_regex' ) ) {
-	/**
-	 * Retrieve the dynamic blocks regular expression for searching.
-	 *
-	 * @since 3.6.0
-	 * @deprecated 5.0.0
-	 *
-	 * @return string
-	 */
-	function get_dynamic_blocks_regex() {
-		_deprecated_function( __FUNCTION__, '5.0.0' );
-
-		$dynamic_block_names   = get_dynamic_block_names();
-		$dynamic_block_pattern = (
-			'/<!--\s+wp:(' .
-			str_replace(
-				'/',
-				'\/',                 // Escape namespace, not handled by preg_quote.
-				str_replace(
-					'core/',
-					'(?:core/)?', // Allow implicit core namespace, but don't capture.
-					implode(
-						'|',                   // Join block names into capture group alternation.
-						array_map(
-							'preg_quote',    // Escape block name for regular expression.
-							$dynamic_block_names
-						)
-					)
-				)
-			) .
-			')(\s+(\{.*?\}))?\s+(\/)?-->/'
-		);
-
-		return $dynamic_block_pattern;
-	}
+/**
+ * Registers a new block style.
+ *
+ * @param string $block_name       Block type name including namespace.
+ * @param array  $style_properties Array containing the properties of the style name, label, style (name of the stylesheet to be enqueued), inline_style (string containing the CSS to be added).
+ *
+ * @return boolean True if the block style was registered with success and false otherwise.
+ */
+function register_block_style( $block_name, $style_properties ) {
+	return WP_Block_Styles_Registry::get_instance()->register( $block_name, $style_properties );
 }
 
 /**
- * Renders a single block into a HTML string.
+ * Unregisters a block style.
  *
- * @since 1.9.0
- * @since 4.4.0 renders full nested tree of blocks before reassembling into HTML string
- * @global WP_Post $post The post to edit.
- * @deprecated 5.0.0 render_block()
+ * @param string $block_name       Block type name including namespace.
+ * @param array  $block_style_name Block style name.
  *
- * @param  array $block A single parsed block object.
- * @return string String of rendered HTML.
+ * @return boolean True if the block style was unregistered with success and false otherwise.
  */
-function gutenberg_render_block( $block ) {
-	_deprecated_function( __FUNCTION__, '5.0.0', 'render_block()' );
-
-	return render_block( $block );
+function unregister_block_style( $block_name, $block_style_name ) {
+	return WP_Block_Styles_Registry::get_instance()->unregister( $block_name, $block_style_name );
 }
 
-if ( ! function_exists( 'strip_dynamic_blocks' ) ) {
-	/**
-	 * Remove all dynamic blocks from the given content.
-	 *
-	 * @since 3.6.0
-	 * @deprecated 5.0.0
-	 *
-	 * @param string $content Content of the current post.
-	 * @return string
-	 */
-	function strip_dynamic_blocks( $content ) {
-		_deprecated_function( __FUNCTION__, '5.0.0' );
+/**
+ * Function responsible for enqueuing the styles required for block styles functionality on the editor and on the frontend.
+ */
+function enqueue_block_styles_assets() {
+	$block_styles = WP_Block_Styles_Registry::get_instance()->get_all_registered();
 
-		return preg_replace( get_dynamic_blocks_regex(), '', $content );
+	foreach ( $block_styles as $styles ) {
+		foreach ( $styles as $style_properties ) {
+			if ( isset( $style_properties['style_handle'] ) ) {
+				wp_enqueue_style( $style_properties['style_handle'] );
+			}
+			if ( isset( $style_properties['inline_style'] ) ) {
+				wp_add_inline_style( 'wp-block-library', $style_properties['inline_style'] );
+			}
+		}
 	}
 }
+add_action( 'enqueue_block_assets', 'enqueue_block_styles_assets', 30 );
 
-if ( ! function_exists( 'strip_dynamic_blocks_add_filter' ) ) {
-	/**
-	 * Adds the content filter to strip dynamic blocks from excerpts.
-	 *
-	 * It's a bit hacky for now, but once this gets merged into core the function
-	 * can just be called in `wp_trim_excerpt()`.
-	 *
-	 * @since 3.6.0
-	 * @deprecated 5.0.0
-	 *
-	 * @param string $text Excerpt.
-	 * @return string
-	 */
-	function strip_dynamic_blocks_add_filter( $text ) {
-		_deprecated_function( __FUNCTION__, '5.0.0' );
+/**
+ * Function responsible for enqueuing the assets required for block styles functionality on the editor.
+ */
+function enqueue_editor_block_styles_assets() {
+	$block_styles = WP_Block_Styles_Registry::get_instance()->get_all_registered();
 
-		add_filter( 'the_content', 'strip_dynamic_blocks', 6 );
-
-		return $text;
+	$register_script_lines = array( '( function() {' );
+	foreach ( $block_styles as $block_name => $styles ) {
+		foreach ( $styles as $style_properties ) {
+			$register_script_lines[] = sprintf(
+				'	wp.blocks.registerBlockStyle( \'%s\', %s );',
+				$block_name,
+				wp_json_encode(
+					array(
+						'name'  => $style_properties['name'],
+						'label' => $style_properties['label'],
+					)
+				)
+			);
+		}
 	}
+	$register_script_lines[] = '} )();';
+	$inline_script           = implode( "\n", $register_script_lines );
+
+	wp_register_script( 'wp-block-styles', false, array( 'wp-blocks' ), true, true );
+	wp_add_inline_script( 'wp-block-styles', $inline_script );
+	wp_enqueue_script( 'wp-block-styles' );
 }
-
-if ( ! function_exists( 'strip_dynamic_blocks_remove_filter' ) ) {
-	/**
-	 * Removes the content filter to strip dynamic blocks from excerpts.
-	 *
-	 * It's a bit hacky for now, but once this gets merged into core the function
-	 * can just be called in `wp_trim_excerpt()`.
-	 *
-	 * @since 3.6.0
-	 * @deprecated 5.0.0
-	 *
-	 * @param string $text Excerpt.
-	 * @return string
-	 */
-	function strip_dynamic_blocks_remove_filter( $text ) {
-		_deprecated_function( __FUNCTION__, '5.0.0' );
-
-		remove_filter( 'the_content', 'strip_dynamic_blocks', 6 );
-
-		return $text;
-	}
-}
+add_action( 'enqueue_block_editor_assets', 'enqueue_editor_block_styles_assets' );

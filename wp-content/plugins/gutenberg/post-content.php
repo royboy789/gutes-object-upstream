@@ -6,8 +6,10 @@
  */
 
 ?>
-<!-- wp:cover {"url":"https://cldup.com/Fz-ASbo2s3.jpg","align":"wide"} -->
-<div class="wp-block-cover has-background-dim alignwide" style="background-image:url(https://cldup.com/Fz-ASbo2s3.jpg)"><p class="wp-block-cover-text"><?php _e( 'Of Mountains &amp; Printing Presses', 'gutenberg' ); ?></p></div>
+<!-- wp:cover {"url":"https://cldup.com/Fz-ASbo2s3.jpg","className":"alignwide"} -->
+<div class="wp-block-cover has-background-dim alignwide" style="background-image:url(https://cldup.com/Fz-ASbo2s3.jpg)"><div class="wp-block-cover__inner-container"><!-- wp:paragraph {"align":"center","placeholder":"Write title…","fontSize":"large"} -->
+<p class="has-text-align-center has-large-font-size"><?php _e( 'Of Mountains &amp; Printing Presses', 'gutenberg' ); ?></p>
+<!-- /wp:paragraph --></div></div>
 <!-- /wp:cover -->
 
 <!-- wp:paragraph -->
@@ -19,7 +21,7 @@
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"align":"right"} -->
-<p style="text-align:right"><?php _e( '... like this one, which is right aligned.', 'gutenberg' ); ?></p>
+<p class="has-text-align-right"><?php _e( '... like this one, which is right aligned.', 'gutenberg' ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph -->
@@ -154,7 +156,7 @@ https://vimeo.com/22439234
 <!-- /wp:pullquote -->
 
 <!-- wp:paragraph {"align":"center"} -->
-<p style="text-align:center">
+<p class="has-text-align-center">
 	<em>
 		<?php
 		echo sprintf(
@@ -176,9 +178,9 @@ https://vimeo.com/22439234
 <!-- /wp:separator -->
 
 <!-- wp:paragraph {"align":"center"} -->
-<p style="text-align:center"><?php _e( 'Thanks for testing Gutenberg!', 'gutenberg' ); ?></p>
+<p class="has-text-align-center"><?php _e( 'Thanks for testing Gutenberg!', 'gutenberg' ); ?></p>
 <!-- /wp:paragraph -->
 
 <!-- wp:paragraph {"align":"center"} -->
-<p style="text-align:center"><img draggable="false" class="emoji" alt="👋" src="https://s.w.org/images/core/emoji/2.3/svg/1f44b.svg" /></p>
+<p class="has-text-align-center">👋</p>
 <!-- /wp:paragraph -->
