@@ -8,14 +8,15 @@ use GutesObjectPlugin\GutesObjectPlugin;
 class Database {
 
 	public function create() {
-		$this->activate_gutes_array_save();
+		register_activation_hook( GutesObjectPlugin::$GutesObjectPluginFile, [ $this, 'activate_gutes_array_save' ] );
+		register_deactivation_hook( GutesObjectPlugin::$GutesObjectPluginFile, [ $this, 'deactivate_gutes_array_save' ] );
 	}
 
 	public function activate_gutes_array_save() {
 		global $wpdb;
 		$table_name = $wpdb->prefix . "gutes_arrays";
 		$charset_collate = $wpdb->get_charset_collate();
-		$sql = "CREATE TABLE IF NOT EXISTS $table_name (
+		$sql = "CREATE TABLE $table_name (
                     id mediumint(9) NOT NULL AUTO_INCREMENT,
                     post_id mediumint(9) NOT NULL,
                     time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
